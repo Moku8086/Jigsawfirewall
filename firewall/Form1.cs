@@ -16,5 +16,16 @@ namespace firewall
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String startMenu = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+
+
+            foreach (String tempPath in System.IO.Directory.GetFiles(startMenu))
+            {
+                MessageBox.Show(tempPath);
+            }
+        }
     }
 }
