@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32.TaskScheduler;
+using System.Text.RegularExpressions;
 
 namespace firewall
 {
@@ -25,7 +21,7 @@ namespace firewall
             String startMenu = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
 
             List<String> blackList = new List<string>();
-            blackList.Add("7f1698bab066b764a314a589d338daae");
+            blackList.Add("5159a9002a2f758b7b7e44c3f21c464a");
 
             foreach (String tempPath in System.IO.Directory.GetFiles(startMenu))
             {
@@ -52,5 +48,33 @@ namespace firewall
                 }
             }
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            TaskService tsksrvs = new TaskService();
+
+
+            foreach (Task tsk in tsksrvs.RootFolder.GetTasks())
+            {
+                
+
+                textBox1.Text += tsk.Name + " (" + tsk.Folder + ")" + "     " + tsk.Definition.Actions.ToString() + Environment.NewLine;
+                //foreach (Trigger trigger in tsk.Definition.Triggers)
+                //{
+
+                //}
+            }
+
+            //foreach (Task tsk in tsksrvs.AllTasks)
+            //{
+            //    //TaskDefinition td = tsk. ;
+            //    //textBox1.Text += tsk.Name + " (" + tsk.Folder + ")"+ "123" + tsk.GetInstances. + "123" + Environment.NewLine;
+                
+            //}
+
+        }
     }
-}
+
+       
+    }
+
